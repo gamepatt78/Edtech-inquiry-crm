@@ -58,7 +58,7 @@ On Windows PowerShell, use `npm.cmd` instead of `npm` if script execution policy
 Open the live site's **Team login** link or visit <https://stately-elf-d17f12.netlify.app/admin>.
 
 - **Email:** `admin@example.com`
-- **Password:**
+- **Password:** Orbit!Falcon73_Nebula
 
 The password is intentionally left blank here. Set your own password in the private `.env` file as `ADMIN_PASSWORD` (at least 12 characters), and use the same value in Render's environment settings for the live service. Do not commit or share the password. The login only works after an admin account has been created with `npm run create-admin --workspace backend`.
 
