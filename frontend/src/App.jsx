@@ -207,21 +207,20 @@ function PublicForm({ theme, onToggleTheme }) {
               <span className="step-label">LET'S GET STARTED</span>
               <h2>Send us an inquiry</h2>
             </div>
-            <span className="form-step">01 <span>/ 01</span></span>
           </div>
           {state.success && <div className="notice success" role="status">Thanks for reaching out. Your inquiry is with our team now.</div>}
           {state.error && <div className="notice error" role="alert">{state.error}</div>}
           <form onSubmit={submit}>
             <div className="form-row">
               <label>
-                I am a <span className="required">*</span>
+                <span className="field-label">I am a <span className="required">*</span></span>
                 <select required name="userType" value={form.userType} onChange={update}>
                   <option value="" disabled>Select user type</option>
                   {userTypes.map((item) => <option key={item}>{item}</option>)}
                 </select>
               </label>
               <label>
-                I need help with <span className="required">*</span>
+                <span className="field-label">I need help with <span className="required">*</span></span>
                 <select required name="category" value={form.category} onChange={update}>
                   <option value="" disabled>Choose a category</option>
                   {categories.map((item) => <option key={item}>{item}</option>)}
@@ -230,16 +229,16 @@ function PublicForm({ theme, onToggleTheme }) {
             </div>
             <div className="form-row">
               <label>
-                Your name <span className="required">*</span>
+                <span className="field-label">Your name <span className="required">*</span></span>
                 <input required minLength="2" maxLength="120" name="name" value={form.name} onChange={update} placeholder="e.g. Alex Morgan" autoComplete="name" />
               </label>
               <label>
-                Email address <span className="required">*</span>
+                <span className="field-label">Email address <span className="required">*</span></span>
                 <input required type="email" maxLength="254" name="email" value={form.email} onChange={update} placeholder="alex@example.com" autoComplete="email" />
               </label>
             </div>
             <label>
-              Phone number <span className="required">*</span>
+              <span className="field-label">Phone number <span className="required">*</span></span>
               <PhoneNumberInput
                 value={form.phone}
                 onChange={update}
@@ -254,7 +253,7 @@ function PublicForm({ theme, onToggleTheme }) {
               />
             </label>
             <label>
-              Tell us a little more <span className="required">*</span>
+              <span className="field-label">Tell us a little more <span className="required">*</span></span>
               <textarea required minLength="10" maxLength="5000" rows="4" name="message" value={form.message} onChange={update} placeholder="For example: I’m interested in the admission process for next term. Could you share the requirements and important dates?" />
             </label>
             <div className="form-footer">
