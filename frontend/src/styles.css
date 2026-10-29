@@ -250,17 +250,17 @@ th, td, .table-footer { border-color: var(--border); }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --page-bg: #111a18;
-  --surface: #192522;
-  --field-bg: #14201d;
+  --page-bg: #0c0d0f;
+  --surface: #151619;
+  --field-bg: #101114;
   --text: #e9eee9;
-  --muted: #a3b0aa;
-  --border: #30413b;
+  --muted: #a1a4aa;
+  --border: #2b2d32;
   --accent: #7fd0ba;
-  --accent-soft: #203c34;
+  --accent-soft: #222629;
   --ink: #e9eee9;
   --purple: #7fd0ba;
-  --line: #30413b;
+  --line: #2b2d32;
 }
 html[data-theme="dark"] .public-page,
 html[data-theme="dark"] .login-page,
@@ -287,7 +287,7 @@ html[data-theme="dark"] .eyebrow,
 html[data-theme="dark"] .step-label,
 html[data-theme="dark"] .sidebar-label,
 html[data-theme="dark"] th,
-html[data-theme="dark"] .stat-card > span:first-child { color: #a3b0aa; }
+html[data-theme="dark"] .stat-card > span:first-child { color: #a1a4aa; }
 html[data-theme="dark"] label,
 html[data-theme="dark"] .admin-link,
 html[data-theme="dark"] .account-chip,
@@ -307,7 +307,7 @@ html[data-theme="dark"] .country-option { color: var(--text); }
 html[data-theme="dark"] .country-picker-popover { border-color: var(--border); background: var(--surface); }
 html[data-theme="dark"] .country-search-label input { color: var(--text); background: var(--field-bg); border-color: var(--border); }
 html[data-theme="dark"] input::placeholder,
-html[data-theme="dark"] textarea::placeholder { color: #82928b; }
+html[data-theme="dark"] textarea::placeholder { color: #858991; }
 html[data-theme="dark"] .button-outline { color: var(--text); background: var(--surface); }
 html[data-theme="dark"] .button-dark { color: #10201b; background: #7fd0ba; }
 html[data-theme="dark"] .button-dark:hover:not(:disabled) { background: #a0e2d0; }
@@ -316,10 +316,10 @@ html[data-theme="dark"] .sidebar-item.active,
 html[data-theme="dark"] .account-avatar,
 html[data-theme="dark"] .login-icon,
 html[data-theme="dark"] .contact-avatar,
-html[data-theme="dark"] .category-tag { color: #a1e2d0; background: #203c34; }
+html[data-theme="dark"] .category-tag { color: #a1e2d0; background: #252a2d; }
 html[data-theme="dark"] .inquiry-count,
 html[data-theme="dark"] thead,
-html[data-theme="dark"] .table-footer { background: #17221f; }
+html[data-theme="dark"] .table-footer { background: #191a1e; }
 html[data-theme="dark"] th,
 html[data-theme="dark"] td,
 html[data-theme="dark"] .filters,
