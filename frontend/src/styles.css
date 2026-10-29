@@ -102,6 +102,11 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #8b7bdf
 .login-card h1 { margin: 10px 0 8px; font: 700 29px Manrope, sans-serif; letter-spacing: -1.3px; }
 .login-card > p { margin: 0 0 25px; color: #888791; font-size: 12px; }
 .login-card form { gap: 17px; }
+.password-input-control { position: relative; display: block; width: 100%; }
+.password-input-control input { padding-right: 44px; }
+.password-visibility-toggle { position: absolute; top: 50%; right: 7px; width: 32px; height: 32px; display: grid; place-items: center; padding: 0; transform: translateY(-50%); border: 0; border-radius: 5px; color: var(--muted); background: transparent; }
+.password-visibility-toggle:hover { color: var(--accent); background: var(--accent-soft); }
+.password-visibility-toggle svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 .button-full { width: 100%; margin-top: 6px; }
 .login-caption { padding: 22px 0; text-align: center; color: #9998a1; font-size: 11px; }
 .login-caption span { color: #7968d7; }
