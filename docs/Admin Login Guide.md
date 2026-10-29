@@ -10,16 +10,16 @@ The login username is the admin email address. There is no separate username.
 
 ## Which credentials to use
 
-Use the values configured in Render under **Web Service → Environment**:
+Use these credentials on the live Team login page:
 
-- `ADMIN_EMAIL` — the email address used to sign in
-- `ADMIN_PASSWORD` — the corresponding password
+- **Email:** `admin@example.com`
+- **Password:**
 
-These are private credentials and are intentionally not written in this file. Do not commit them to GitHub or share them in chat.
+The password is intentionally left blank in this guide. Use the `ADMIN_PASSWORD` value configured in Render under **Web Service → Environment**. Do not commit the password to GitHub or share it in chat.
 
 ## Create or reset the admin account
 
-Set `DATABASE_URL`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in the local `.env` file, then run the command from the project root. In Windows PowerShell, use `npm.cmd` to avoid the script execution policy blocking `npm.ps1`:
+Set `DATABASE_URL`, `ADMIN_EMAIL=admin@example.com`, and your private `ADMIN_PASSWORD` in the local `.env` file, then run the command from the project root. The password must be at least 12 characters. In Windows PowerShell, use `npm.cmd` to avoid the script execution policy blocking `npm.ps1`:
 
 ```powershell
 npm.cmd run create-admin --workspace backend
@@ -31,7 +31,7 @@ On macOS/Linux, use:
 npm run create-admin --workspace backend
 ```
 
-The command creates the admin account or updates its password in the database. The password must be at least 12 characters. After changing production credentials, make sure Render has the same `ADMIN_EMAIL` and `ADMIN_PASSWORD` values and redeploy the service.
+The command creates the admin account or updates its password in the database. Make sure Render has the same email and password values as your local `.env`, then redeploy the service after changing production credentials.
 
 ## Dashboard
 
