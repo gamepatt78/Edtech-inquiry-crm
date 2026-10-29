@@ -35,7 +35,7 @@ A full-stack inquiry workflow with a public contact form and a JWT-protected adm
 ## Using the app
 
 - Submit a test inquiry at `/`.
-- The phone field lets you search countries by name or calling code (for example, `91` finds India `+91`); the saved phone number includes the selected code.
+- The phone field lets you search countries by name or calling code (for example, `91` finds India `+91`); it limits digits to the selected country's mobile-number lengths and the API validates the full international number.
 - Sign in at `/admin` using `ADMIN_EMAIL` and `ADMIN_PASSWORD`.
 - The dashboard at `/dashboard` requires a valid JWT. It supports category and user-type filters, name/phone search, and status updates.
 - The admin token is kept in `sessionStorage` and sent as a Bearer token. Sign out clears it.

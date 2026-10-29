@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { getCountries, getCountryCallingCode } from 'libphonenumber-js';
+import { Metadata } from 'libphonenumber-js/core';
+import phoneMetadata from 'libphonenumber-js/metadata.mobile';
 import { apiRequest } from './api.js';
 
 const categories = ['Scholarship', 'Concert', 'Admission', 'General Query'];
@@ -13,6 +15,17 @@ const countries = getCountries().map((code) => ({
   dialCode: getCountryCallingCode(code),
   flag: String.fromCodePoint(...code.split('').map((letter) => 127397 + letter.charCodeAt(0))),
 })).sort((first, second) => first.name.localeCompare(second.name));
+
+function getPhoneLengthLimits(country) {
+  const metadata = new Metadata(phoneMetadata);
+  metadata.selectNumberingPlan(country);
+  const mobileLengths = metadata.numberingPlan?.type('MOBILE')?.possibleLengths();
+  const possibleLengths = mobileLengths?.length ? mobileLengths : metadata.numberingPlan?.possibleLengths();
+  const validLengths = possibleLengths?.filter((length) => Number.isInteger(length) && length > 0) ?? [];
+
+  if (validLengths.length === 0) return { min: 6, max: 15 };
+  return { min: Math.min(...validLengths), max: Math.max(...validLengths) };
+}
 
 function Brand({ admin = false }) {
   return (
@@ -47,6 +60,7 @@ function PhoneNumberInput({ value, onChange, country, onCountryChange }) {
   const wrapperRef = useRef(null);
   const searchRef = useRef(null);
   const selectedCountry = countries.find((item) => item.code === country) ?? countries[0];
+  const phoneLengthLimits = getPhoneLengthLimits(selectedCountry.code);
   const dialSearch = search.replace(/\D/g, '');
   const matches = countries.filter((item) => (
     item.name.toLowerCase().includes(search.trim().toLowerCase())
@@ -92,12 +106,17 @@ function PhoneNumberInput({ value, onChange, country, onCountryChange }) {
       <input
         required
         type="tel"
-        minLength="6"
-        maxLength="18"
+        minLength={phoneLengthLimits.min}
+        maxLength={phoneLengthLimits.max}
         name="phone"
         value={value}
-        onChange={onChange}
+        onChange={(event) => {
+          const digits = event.target.value.replace(/\D/g, '').slice(0, phoneLengthLimits.max);
+          onChange({ target: { name: 'phone', value: digits } });
+        }}
         placeholder="Phone number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         autoComplete="tel-national"
         aria-label="Phone number without country code"
       />
@@ -225,7 +244,13 @@ function PublicForm({ theme, onToggleTheme }) {
                 value={form.phone}
                 onChange={update}
                 country={phoneCountry}
-                onCountryChange={setPhoneCountry}
+                onCountryChange={(country) => {
+                  setPhoneCountry(country);
+                  setForm((current) => ({
+                    ...current,
+                    phone: current.phone.slice(0, getPhoneLengthLimits(country).max),
+                  }));
+                }}
               />
             </label>
             <label>

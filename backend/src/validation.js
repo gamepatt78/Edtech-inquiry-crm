@@ -1,11 +1,12 @@
 import { z } from 'zod';
+import { isValidPhoneNumber } from 'libphonenumber-js/max';
 
 export const inquirySchema = z.object({
   userType: z.enum(['Parent', 'Student', 'School']),
   category: z.enum(['Scholarship', 'Concert', 'Admission', 'General Query']),
   name: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(254),
-  phone: z.string().trim().regex(/^[+]?[\d\s().-]{7,25}$/),
+  phone: z.string().trim().refine((value) => isValidPhoneNumber(value), 'Enter a valid phone number.'),
   message: z.string().trim().min(10).max(5000),
 });
 

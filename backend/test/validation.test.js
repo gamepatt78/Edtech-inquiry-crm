@@ -28,6 +28,19 @@ test('rejects invalid inquiry categories and malformed contact details', () => {
   assert.equal(result.success, false);
 });
 
+test('rejects phone numbers that are too long for their country', () => {
+  const result = inquirySchema.safeParse({
+    userType: 'Student',
+    category: 'Admission',
+    name: 'Alex Morgan',
+    email: 'alex@example.com',
+    phone: '+91 98765 432109',
+    message: 'I would like to learn about admissions.',
+  });
+
+  assert.equal(result.success, false);
+});
+
 test('accepts valid login fields and supported status values only', () => {
   assert.equal(loginSchema.safeParse({ email: 'admin@example.com', password: 'a-secret' }).success, true);
   assert.equal(statusSchema.safeParse({ status: 'In Progress' }).success, true);
