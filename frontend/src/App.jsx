@@ -186,7 +186,7 @@ function PublicForm({ theme, onToggleTheme }) {
         <Brand />
         <div className="topbar-right">
           <span className="topbar-note">Here for your next big step</span>
-          <Link className="admin-link" to="/admin">Team login <span aria-hidden="true">↗</span></Link>
+          <Link className="admin-link" to="/admin" onClick={() => sessionStorage.removeItem('adminToken')}>Team login <span aria-hidden="true">↗</span></Link>
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
         </div>
       </header>
