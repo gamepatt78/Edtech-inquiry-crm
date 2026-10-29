@@ -1,10 +1,12 @@
-# Hoe to Run
+# How to Run
+
+This guide covers starting the application on your local machine. For the complete setup and JWT verification steps, see the [root README](../README.md).
 
 ## Before starting
 
 - Make sure you have Node.js installed.
 - In the project root, make sure `.env` contains your Supabase PostgreSQL connection string, a `JWT_SECRET` of at least 32 characters, and your admin email and password.
-- Run `schema.sql` in the Supabase SQL Editor if you have not created the tables yet.
+- Run [`schema.sql`](../schema.sql) in the Supabase SQL Editor if you have not created the tables yet.
 
 ## Start the application
 
