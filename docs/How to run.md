@@ -22,7 +22,7 @@ This starts both servers:
 - Admin login: <http://localhost:5173/admin>
 - API health check: <http://localhost:4000/api/health>
 
-The health check should return `{"status":"ok"}`. To log in, use the `ADMIN_EMAIL` and `ADMIN_PASSWORD` values from `.env`. If you have not created the admin account yet, run this once from the project folder:
+The health check should return `{"status":"ok"}`. The team login email is `admin@example.com`; enter the private password you set in `.env` (it is intentionally not written in this guide). If you have not created the admin account yet, run this once from the project folder:
 
 ```powershell
 npm.cmd run create-admin --workspace backend
