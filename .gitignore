@@ -4,3 +4,4 @@ dist/
 .env.*
 !.env.example
 npm-debug.log*
+/documents/Full-Stack Assessment Task EdTech CRM and Inquiry System.pdf

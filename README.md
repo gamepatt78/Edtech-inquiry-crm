@@ -11,7 +11,7 @@ A full-stack inquiry workflow with a public contact form and a JWT-protected adm
 - **Environment template:** [`.env.example`](.env.example)
 - **Additional setup guide, login guide, and inquiry examples:** [`docs/`](docs/)
 
-The repository contains separate `frontend/` and `backend/` workspaces.
+The repository contains separate `frontend/` and `backend/` workspaces. The original assessment brief PDF is intentionally kept out of this repository.
 
 ## Requirements
 
