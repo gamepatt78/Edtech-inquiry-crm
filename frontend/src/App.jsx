@@ -402,9 +402,9 @@ function Dashboard({ theme, onToggleTheme }) {
       <aside className="sidebar">
         <Brand admin />
         <div className="sidebar-label">WORKSPACE</div>
-        <div className="sidebar-item active"><span className="sidebar-icon">▤</span> Inquiries <span className="sidebar-count">{summary.total}</span></div>
+        <div className="sidebar-item active" aria-current="page"><span className="sidebar-icon" aria-hidden="true">▤</span><span>Inquiries</span><span className="sidebar-count">{summary.total}</span></div>
         <div className="sidebar-bottom">
-          <div className="sidebar-help"><span>✳</span><div><strong>Here to help</strong><small>Every conversation counts.</small></div></div>
+          <div className="sidebar-help"><span aria-hidden="true">✳</span><div><strong>Your team inbox</strong><small>Every conversation counts.</small></div></div>
           <button className="signout-button" onClick={signOut}><span>↪</span> Sign out</button>
         </div>
       </aside>
@@ -418,18 +418,27 @@ function Dashboard({ theme, onToggleTheme }) {
         </header>
         <section className="dashboard-content">
           <div className="dashboard-title-row">
-            <div><span className="step-label">YOUR INBOX</span><h1>Inquiries<span className="title-period">.</span></h1><p>A little context goes a long way. Here's what's come in.</p></div>
-            <Link to="/" className="button button-outline">View public form <span>↗</span></Link>
+            <div><span className="step-label">YOUR INBOX</span><h1>Inquiry overview</h1><p>Keep track of conversations and help each learner take their next step.</p></div>
+            <Link to="/" className="button button-outline">Open public form <span>↗</span></Link>
           </div>
           <div className="stats-row">
-            <div className="stat-card"><span>IN THIS VIEW</span><strong>{summary.total}</strong><small>matching inquiries</small><span className="stat-decoration">↗</span></div>
-            <div className="stat-card"><span>NEEDS ATTENTION</span><strong>{summary.open}</strong><small>not yet resolved</small><span className="stat-decoration warm">✳</span></div>
-            <div className="stat-card"><span>RESOLVED</span><strong>{summary.resolved}</strong><small>in this view</small><span className="stat-decoration green">✓</span></div>
+            <div className="stat-card stat-card-total">
+              <div className="stat-card-top"><span>ALL INQUIRIES</span><span className="stat-icon" aria-hidden="true">↗</span></div>
+              <strong>{summary.total}</strong><small>Matching your current filters</small>
+            </div>
+            <div className="stat-card stat-card-open">
+              <div className="stat-card-top"><span>NEEDS ATTENTION</span><span className="stat-icon" aria-hidden="true">✳</span></div>
+              <strong>{summary.open}</strong><small>Waiting for a resolution</small>
+            </div>
+            <div className="stat-card stat-card-resolved">
+              <div className="stat-card-top"><span>RESOLVED</span><span className="stat-icon" aria-hidden="true">✓</span></div>
+              <strong>{summary.resolved}</strong><small>Successfully completed</small>
+            </div>
           </div>
           <section className="inquiries-card">
-            <div className="inquiries-heading"><div><h2>All inquiries</h2><p>Search and sort through every conversation.</p></div><span className="inquiry-count">{summary.total} total</span></div>
+            <div className="inquiries-heading"><div><h2>Recent inquiries</h2><p>Search, filter, and update your conversations.</p></div><span className="inquiry-count">{summary.total} {summary.total === 1 ? 'result' : 'results'}</span></div>
             <div className="filters">
-              <label className="search-field"><span aria-hidden="true">⌕</span><input aria-label="Search by name or phone" placeholder="Search name or phone…" value={search} onChange={(event) => setSearch(event.target.value)} /><kbd>⌘ K</kbd></label>
+              <label className="search-field"><span aria-hidden="true">⌕</span><input aria-label="Search by name or phone" placeholder="Search name or phone…" value={search} onChange={(event) => setSearch(event.target.value)} /><kbd>Search</kbd></label>
               <select aria-label="Filter by category" value={category} onChange={(event) => setCategory(event.target.value)}><option value="">All categories</option>{categories.map((item) => <option key={item}>{item}</option>)}</select>
               <select aria-label="Filter by user type" value={userType} onChange={(event) => setUserType(event.target.value)}><option value="">All user types</option>{userTypes.map((item) => <option key={item}>{item}</option>)}</select>
             </div>
