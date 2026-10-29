@@ -279,6 +279,10 @@ function AdminLogin({ theme, onToggleTheme }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    sessionStorage.removeItem('adminToken');
+  }, []);
+
   async function submit(event) {
     event.preventDefault();
     setLoading(true);
@@ -297,7 +301,6 @@ function AdminLogin({ theme, onToggleTheme }) {
     }
   }
 
-  if (sessionStorage.getItem('adminToken')) return <Navigate to="/dashboard" replace />;
   return (
     <main className="login-page">
       <header className="topbar"><Brand admin /><div className="login-header-actions"><ThemeToggle theme={theme} onToggle={onToggleTheme} /><Link className="back-link" to="/">← Back to inquiry form</Link></div></header>
